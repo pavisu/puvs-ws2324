@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AnimalRegistry.Entity.Animal;
+import com.example.AnimalRegistry.Service.AnimalServices;
 
 
 @RestController
@@ -14,13 +15,14 @@ import com.example.AnimalRegistry.Entity.Animal;
 @RequestMapping("api/v1/animal")
 public class AnimalController {
     
-
+    @Autowired
+    private AnimalServices animalServices;
 
     @PostMapping(value= "/save")
     private String saveAnimal(@RequestBody Animal animals){
 
 
-
+        animalServices.saveorUpdate(animals);
         return animals.id;
     }
 }
