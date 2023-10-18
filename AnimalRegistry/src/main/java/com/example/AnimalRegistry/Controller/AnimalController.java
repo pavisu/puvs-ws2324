@@ -23,6 +23,6 @@ public class AnimalController {
 
 
         animalServices.saveorUpdate(animals);
-        return animals.id;
+        return animals.get_id();
     }
 }
