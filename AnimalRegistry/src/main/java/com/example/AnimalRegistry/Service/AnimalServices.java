@@ -3,6 +3,7 @@ package com.example.AnimalRegistry.Service;
 import com.example.AnimalRegistry.Entity.Animal;
 import com.example.AnimalRegistry.Repo.AnimalRepo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -16,6 +17,13 @@ public class AnimalServices {
 
         repo.save(animals);
 
+    }
+
+    public Iterable<Animal> listAll() {
+        return this.repo.findAll();
+    }
+
+    public void deleteAnimal(String string) {
     }
 
 }

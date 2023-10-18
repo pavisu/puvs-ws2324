@@ -13,8 +13,40 @@ public class Animal {
     private String phonenumber;
 
 
+    public String getAnimalid() {
+        return animalid;
+    }
+
+    public void setAnimalid(String animalid) {
+        this.animalid = animalid;
+    }
+
+    public String getAnimalname() {
+        return animalname;
+    }
+
+    public void setAnimalname(String animalname) {
+        this.animalname = animalname;
+    }
+
+    public String getAnimaladdress() {
+        return animaladdress;
+    }
+
+    public void setAnimaladdress(String animaladdress) {
+        this.animaladdress = animaladdress;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
     public Animal(String id, String animalname, String animaladdress, String phonenumber) {
-        this.id = id;
+        this.animalid = id;
         this.animalname = animalname;
         this.animaladdress = animaladdress;
         this.phonenumber = phonenumber;
@@ -29,7 +61,7 @@ public class Animal {
     @Override
     public String toString(){
         return "Animal{" +
-        "id='" + id + '\'' +
+        "id='" + animalid + '\'' +
         ", animalname='" + animalname + '\'' +
         ", animaladdress='" + animaladdress + '\'' +
         ", phonenumber='" + phonenumber + '\'' +
