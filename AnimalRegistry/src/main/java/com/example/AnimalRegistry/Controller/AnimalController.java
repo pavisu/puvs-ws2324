@@ -53,4 +53,10 @@ public class AnimalController {
         animalServices.deleteAnimal((animalid));
     }
 
+
+    @RequestMapping("/animal/{id}")
+    private Animal getAnimal(@PathVariable(name="id")String animalid){
+        return animalServices.getAnimalById(animalid);
+    }
+
 }

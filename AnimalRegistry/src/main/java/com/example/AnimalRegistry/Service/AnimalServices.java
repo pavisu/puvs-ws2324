@@ -23,7 +23,12 @@ public class AnimalServices {
         return this.repo.findAll();
     }
 
-    public void deleteAnimal(String string) {
+    public void deleteAnimal(String id) {
+        repo.deleteById(id);
+    }
+
+    public Animal getAnimalById(String animalid) {
+        return repo.findById(animalid).get();
     }
 
 }
