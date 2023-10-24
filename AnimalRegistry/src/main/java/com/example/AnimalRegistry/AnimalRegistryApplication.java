@@ -10,4 +10,11 @@ public class AnimalRegistryApplication {
 		SpringApplication.run(AnimalRegistryApplication.class, args);
 	}
 
+	/*@RestController
+	class Greet {
+		@RequestMapping("/")
+		String greeting() {
+			return "Hello Cat!";
+		}
+	}*/
 }
