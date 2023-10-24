@@ -59,40 +59,6 @@ public class Animal {
 
     public Animal() {}
 
-
-    /*public String getAnimalid() {
-        return animalid;
-    }
-
-    public void setAnimalid(String animalid) {
-        this.animalid = animalid;
-    }
-
-    public String getAnimalname() {
-        return animalname;
-    }
-
-    public void setAnimalname(String animalname) {
-        this.animalname = animalname;
-    }
-
-    public String getAnimaladdress() {
-        return animaladdress;
-    }
-
-    public void setAnimaladdress(String animaladdress) {
-        this.animaladdress = animaladdress;
-    }
-
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
-*/
    @Override
     public String toString(){
         return "Animal{" +

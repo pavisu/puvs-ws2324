@@ -20,7 +20,6 @@ public class AnimalServices {
     }
 
     public Iterable<Animal> listAll() {
-
         return repo.findAll();
     }
 
