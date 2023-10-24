@@ -10,6 +10,8 @@ Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 
 4. Test Backend part
 
-5. Create Fronted with React.JS or Angular
+5. Create Fronted with React or Angular
+
+6. Try out React
 
 
