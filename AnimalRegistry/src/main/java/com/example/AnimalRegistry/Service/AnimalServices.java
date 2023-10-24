@@ -20,7 +20,8 @@ public class AnimalServices {
     }
 
     public Iterable<Animal> listAll() {
-        return this.repo.findAll();
+
+        return repo.findAll();
     }
 
     public void deleteAnimal(String id) {
