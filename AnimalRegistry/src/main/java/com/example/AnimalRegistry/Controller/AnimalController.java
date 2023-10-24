@@ -54,7 +54,7 @@ public class AnimalController {
     }
 
 
-    @RequestMapping("/animal/{id}")
+    @RequestMapping("/search/{id}")
     private Animal getAnimal(@PathVariable(name="id")String animalid){
         return animalServices.getAnimalById(animalid);
     }
