@@ -6,12 +6,15 @@ import org.springframework.web.bind.annotation.*;
 import com.example.AnimalRegistry.Entity.Animal;
 import com.example.AnimalRegistry.Service.AnimalServices;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.lang.Iterable;
 
 
 
 
 @RestController
+@Tag(name = "Animal Registry API")
 @CrossOrigin(origins = "*")
 @RequestMapping("api/v1/animal")
 public class AnimalController {
