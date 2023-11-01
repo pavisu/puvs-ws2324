@@ -1,4 +1,5 @@
-import Animal from "./components/animal";
+import Animal from "./components/animalv2";
+
 
 function App() {
   return (
