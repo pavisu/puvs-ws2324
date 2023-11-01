@@ -1,5 +1,7 @@
-/*import axios from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import './Animal.css'; // Import custom styles
 
 function Animal() {
   // The Logic of the User Interface
@@ -25,7 +27,7 @@ function Animal() {
     event.preventDefault();
     try {
       await axios.post("http://localhost:8081/api/v1/animal/save", {
-        animalid:animalid,
+        //animalid: animalid,
         animalname: animalname,
         animaladdress: animaladdress,
         phonenumber: phonenumber,
@@ -61,7 +63,7 @@ function Animal() {
 
     try {
       await axios.put("http://localhost:8081/api/v1/animal/edit/" + animalid, {
-        animalid:animalid,
+        //animalid: animalid,
         animalname: animalname,
         animaladdress: animaladdress,
         phonenumber: phonenumber,
@@ -79,114 +81,103 @@ function Animal() {
 
   // The User Interface
   return (
-    <div>
-      <h1>Animal Information</h1>
-      <div class="container mt-4">
-        <form>
-
-        <div class="form-group">
-            <label>Animal ID</label>
-            <input
-              type="text"
-              class="form-control"
-              id="animalid"
-              value={animalid}
-              onChange={(event) => {
-                setId(event.target.value);
-              }}
-            />
-          </div>
-
-          <div class="form-group">
-            <label>Animal Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="animalname"
-              value={animalname}
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
-            />
-          </div>
-
-          <div class="form-group">
-            <label>Animal Address</label>
-            <input
-              type="text"
-              class="form-control"
-              id="animaladdress"
-              value={animaladdress}
-              onChange={(event) => {
-                setAddress(event.target.value);
-              }}
-            />
-          </div>
-
-          <div class="form-group">
-            <label>Phonenumber</label>
-            <input
-              type="text"
-              class="form-control"
-              id="phonenumber"
-              value={phonenumber}
-              onChange={(event) => {
-                setPhonenumber(event.target.value);
-              }}
-            />
-          </div>
-          <div>
-            <button class="btn btn-primary mt-4" onClick={save}>
-              Register
-            </button>
-            <button class="btn btn-warning mt-4" onClick={update}>
-              Update
-            </button>
-          </div>
-        </form>
-      </div>
-      <br />
-      <table class="table table-grey" align="center">
-        <thead>
-          <tr>
-            <th scope="col">Animal ID</th>
-            <th scope="col">Animal Name</th>
-            <th scope="col">Animal Address</th>
-            <th scope="col">Phonenumber</th>
-            <th scope="col">Option</th>
-          </tr>
-        </thead>
-        {animals.map(function fn(animal) {
-          return (
-            <tbody>
+    <div className="container mt-5 cute-ui">
+      <h1 className="text-center mb-4">Animal Information</h1>
+      <div className="row">
+        <div className="col-md-4">
+          {/* Form input fields for animal data */}
+          <form>
+            
+            <div className="form-group">
+              <label>Animal Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="animalname"
+                value={animalname}
+                onChange={(event) => {
+                  setName(event.target.value);
+                }}
+              />
+            </div>
+            <div className="form-group">
+              <label>Animal Address</label>
+              <input
+                type="text"
+                className="form-control"
+                id="animaladdress"
+                value={animaladdress}
+                onChange={(event) => {
+                  setAddress(event.target.value);
+                }}
+              />
+            </div>
+            <div className="form-group">
+              <label>Phonenumber</label>
+              <input
+                type="text"
+                className="form-control"
+                id="phonenumber"
+                value={phonenumber}
+                onChange={(event) => {
+                  setPhonenumber(event.target.value);
+                }}
+              />
+            </div>
+            <div className="text-center">
+              <button className="btn btn-primary mt-3 cute-button" onClick={save}>
+                Register
+              </button>
+              <button className="btn btn-secondary mt-3 ml-2 cute-button-update" onClick={update}>
+                Update
+              </button>
+            </div>
+          </form>
+        </div>
+        <div className="col-md-8">
+          <table className="table table-striped cute-table">
+            <thead>
               <tr>
-                <td>{animal.animalid}</td>
-                <td>{animal.animalname}</td>
-                <td>{animal.animaladdress}</td>
-                <td>{animal.phonenumber}</td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn btn-warning"
-                    onClick={() => editAnimal(animal)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-danger"
-                    onClick={() => DeleteAnimal(animal.animalid)}
-                  >
-                    Delete
-                  </button>
-                </td>
+                {/*<th scope="col">Animal ID</th>*/}
+                <th scope="col">Animal Name</th>
+                <th scope="col">Animal Address</th>
+                <th scope="col">Phonenumber</th>
+                <th scope="col">Option</th>
               </tr>
+            </thead>
+            <tbody>
+              {animals.map(function fn(animal) {
+                return (
+                  <tr key={animal.animalid}>
+                    {/*<td>{animal.animalid}</td>*/}
+                    <td>{animal.animalname}</td>
+                    <td>{animal.animaladdress}</td>
+                    <td>{animal.phonenumber}</td>
+                    <td>
+                      {/* Buttons for editing and deleting animals */}
+                      <button
+                        type="button"
+                        className="btn btn-warning cute-button"
+                        onClick={() => editAnimal(animal)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-danger cute-button-two"
+                        onClick={() => DeleteAnimal(animal.animalid)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
-          );
-        })}
-      </table>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
 export default Animal;
-*/

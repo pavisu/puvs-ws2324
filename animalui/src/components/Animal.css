@@ -6,7 +6,19 @@
   .cute-button {
     background-color: #FF69B4; /* Pink button background */
     color: #fff; /* White text on buttons */
-    border: none;
+    border: solid;
+  }
+
+  .cute-button-two {
+    background-color: royalblue; /* Pink button background */
+    color: #fff; /* White text on buttons */
+    border: solid;
+  }
+
+  .cute-button-update {
+    background-color: sandybrown; /* Pink button background */
+    color: #fff; /* White text on buttons */
+    border: solid;
   }
   
   .cute-button:hover {
