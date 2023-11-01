@@ -14,6 +14,8 @@ Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 
 6. Create Fronted with React or Angular
 
-7. Try out React
+7. Try out React and Create UI with Logic
+
+8. Create a docker-compose.yml file
 
 
