@@ -1,0 +1,24 @@
+/* Animal.css */
+.cute-ui {
+    background-color: #FFB6C1; /* Light pink background */
+  }
+  
+  .cute-button {
+    background-color: #FF69B4; /* Pink button background */
+    color: #fff; /* White text on buttons */
+    border: none;
+  }
+  
+  .cute-button:hover {
+    background-color: #FF1493; /* Darker pink on button hover */
+  }
+  
+  .cute-table {
+    background-color: #FFE4E1; /* Light pink table background */
+    border: 2px solid #FF69B4; /* Pink table border */
+  }
+  
+  /* Add more styles as needed */
+  
+  /* Override Bootstrap styles as necessary */
+  

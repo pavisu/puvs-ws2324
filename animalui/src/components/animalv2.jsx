@@ -1,7 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import './Animal.css'; // Import custom styles
+
 
 function Animal() {
+
+// Logic of the UI 
+    
   // State variables for managing form input and data
   const [animalData, setAnimalData] = useState({
     animalid: "",
@@ -43,6 +49,8 @@ function Animal() {
     }
   }
 
+  
+
   async function updateAnimal() {
     try {
     // Send a PUT request to update an existing animal using the form data and the ID of the animal to update.
@@ -73,6 +81,17 @@ function Animal() {
     }
   }
 
+  async function editAnimal(animals) {
+    // Set the state with the data of the selected animal for editing
+    setAnimalData({
+      animalid: animals.animalid,
+      animalname: animals.animalname,
+      animaladdress: animals.animaladdress,
+      phonenumber: animals.phonenumber,
+    });
+    setEditingAnimalId(animals.animalid); // Set the editingAnimalId state
+  }
+
   function clearForm() {
     // Clear the form fields and reset the editing state.
     setAnimalData({
@@ -84,13 +103,18 @@ function Animal() {
     setEditingAnimalId(null);
   }
 
+
+  //User Interface
   return (
-    <div>
-      <h1>Animal Information</h1>
-      <div className="container mt-4">
-        {/* Form input fields for animal data */}
+      
+      <div className="container mt-5 cute-ui">
+      <h1 className="text-center mb-4">Animal Information</h1>
+        
+          <div className="row">
+          <div className="col-md-4">
+            {/* Form input fields for animal data */}
         <form>
-          <div className="form-group">
+            <div className="form-group">
             <label>Animal ID</label>
             <input
               type="text"
@@ -134,22 +158,22 @@ function Animal() {
               }
             />
           </div>
-          <div>
+          <div className="text-center">
             {/* Unified button to handle registration and update */}
             <button
-              className="btn btn-primary mt-4"
-              onClick={editingAnimalId ? updateAnimal : saveAnimal}
+                className={`btn ${editingAnimalId ? "btn-warning" : "btn-primary"} mt-3`}
+                onClick={editingAnimalId ? updateAnimal : saveAnimal}
             >
               {editingAnimalId ? "Update" : "Register"}
             </button>
-            <button className="btn btn-warning mt-4" onClick={clearForm}>
+            <button className="btn btn-secondary mt-3 ml-2 cute-button" onClick={clearForm}>
               Clear
             </button>
           </div>
         </form>
       </div>
-      <br />
-      <table className="table table-grey" align="center">
+      <div className="col-md-8">
+          <table className="table table-striped cute-table">
         <thead>
           <tr>
             <th scope="col">Animal ID</th>
@@ -169,13 +193,13 @@ function Animal() {
               <td>
                 {/* Buttons for editing and deleting animals */}
                 <button
-                  className="btn btn-warning"
-                  onClick={() => setEditingAnimalId(animal.animalid)}
+                  className="btn btn-warning cute-button"
+                  onClick={() => editAnimal(animal)}
                 >
                   Edit
                 </button>
                 <button
-                  className="btn btn-danger"
+                  className="btn btn-danger cute-button"
                   onClick={() => deleteAnimal(animal.animalid)}
                 >
                   Delete
@@ -185,6 +209,8 @@ function Animal() {
           ))}
         </tbody>
       </table>
+    </div>
+    </div>
     </div>
   );
 }
