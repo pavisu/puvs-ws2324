@@ -10,6 +10,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      - my-network
       
   spring-api:
     build:
@@ -22,7 +24,8 @@ services:
     environment:
       SPRING_DATA_MONGODB_URI: mongodb://root:example@mongodb:27017
       SPRING_DATA_MONGODB_DATABASE: animaldb
-
+    networks:
+      - my-network
 
   react-app:
     build:
@@ -34,6 +37,8 @@ services:
       - spring-api
     environment:
       REACT_APP_API_URL: http://spring-api:8081
+    networks:
+      - my-network
 
   collector:
     image: otel/opentelemetry-collector:0.72.0
@@ -44,10 +49,18 @@ services:
       - "4317:4317"
     depends_on:
       - jaeger-service
+    networks:
+      - my-network
 
   jaeger-service:
     image: jaegertracing/all-in-one:latest
     ports:
       - "16686:16686"
       - "14250"
+    depends_on:
+      - react-app
+    networks:
+      - my-network
 
+networks:
+  my-network:
