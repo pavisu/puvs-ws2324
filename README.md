@@ -201,5 +201,4 @@ This guide will walk you through the steps to start your project using Docker Co
    This is helpful when you want to start with a clean slate.
 
 Congratulations! Your project is up and running using Docker Compose. You can now develop and test your application in this environment.
-```
 
