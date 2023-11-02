@@ -12,6 +12,8 @@ import java.lang.Iterable;
 
 
 
+
+
 // This class is marked as a Spring RestController, indicating that it handles HTTP requests and serves as a part of the API.
 @RestController
 // The @Tag annotation is often used for API documentation, and it specifies the name of the tag for this controller.
@@ -31,10 +33,11 @@ public class AnimalController {
    @Autowired
    private AnimalServices animalServices;
 
+
     // Define a POST endpoint for saving an animal
     @PostMapping(value="/save")
     private String saveAnimal(@RequestBody Animal animals){
-
+        
         // Call the saveorUpdate method from AnimalServices to save or update the animal
         animalServices.saveorUpdate(animals);
 

@@ -10,7 +10,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
-
+      
   spring-api:
     build:
       context: ./AnimalRegistry  # Specify the path to your Spring API Dockerfile
@@ -23,6 +23,7 @@ services:
       SPRING_DATA_MONGODB_URI: mongodb://root:example@mongodb:27017
       SPRING_DATA_MONGODB_DATABASE: animaldb
 
+
   react-app:
     build:
       context: ./animalui  # Specify the path to your React app Dockerfile
@@ -33,3 +34,12 @@ services:
       - spring-api
     environment:
       REACT_APP_API_URL: http://spring-api:8081
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: my-jaeger
+    ports:
+      - "16686:16686"
+      - "6831:6831/udp"
+    environment:
+      COLLECTOR_ZIPKIN_HTTP_PORT: 9411
