@@ -20,44 +20,40 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>io.opentelemetry</groupId>
-				<artifactId>opentelemetry-bom</artifactId>
-				<version>1.31.0</version>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>2021.0.5</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-sleuth-otel-dependencies</artifactId>
+				<version>1.1.2</version>
+				<scope>import</scope>
+				<type>pom</type>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-api</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-sleuth-brave</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-otel-autoconfigure</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-sdk</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-sdk-metrics</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-exporter-logging</artifactId>
-		</dependency>
-		<dependency>
-			<!-- Not managed by opentelemetry-bom -->
-			<groupId>io.opentelemetry.semconv</groupId>
-			<artifactId>opentelemetry-semconv</artifactId>
-			<version>1.22.0-alpha</version>
-		</dependency>
-		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-sdk-extension-autoconfigure</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.opentelemetry</groupId>
-			<artifactId>opentelemetry-sdk-extension-autoconfigure-spi</artifactId>
+			<artifactId>opentelemetry-exporter-otlp</artifactId>
+			<version>1.23.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
