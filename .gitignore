@@ -1,0 +1,16 @@
+# Docker Compose files
+docker-compose.yml
+docker-compose.yaml
+
+# Docker Compose override files
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# Compose cache directory
+.docker-compose
+
+# Compose logs directory
+logs/
+
+# Compose data directory
+data/
