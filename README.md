@@ -18,6 +18,8 @@ Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 
 8. Create a docker-compose.yml file
 
+9. Use implementation language which is supported by OTel: https://opentelemetry.io/docs/instrumentation/
+
 
 # Spring Controller Documentation: AnimalController
 
