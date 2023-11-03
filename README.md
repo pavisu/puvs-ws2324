@@ -2,23 +2,30 @@
 Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 
 ## Step by step coding the lab project
-1. Adding the Application logic (for demo purposes)
 
-2. Add Controller, Entity, Repo and Service
+- Adding the Application logic (for demo purposes)
 
-3. Using MongoDB, MongoCompass and Postman
+- Add Controller, Entity, Repo and Service
 
-4. Test Backend part
+- Using MongoDB, MongoCompass and Postman
 
-5. Implement OpenAPI Swagger
+- Test Backend part
 
-6. Create Fronted with React or Angular
+- Implement OpenAPI Swagger
 
-7. Try out React and Create UI with Logic
+- Create Fronted with React or Angular
 
-8. Create a docker-compose.yml file
+- Try out ReactJS and Create UI with Logic
 
-9. Use implementation language which is supported by OTel: https://opentelemetry.io/docs/instrumentation/
+- Create Dockerfile for SpringAPI and ReactJS
+
+- Create a docker-compose.yml file
+
+- Use implementation language which is supported by OTel: https://opentelemetry.io/docs/instrumentation/
+
+- Using Java as implementation Language
+
+- Implemented OpenTelemetry and Jaeger for tracing
 
 
 # Spring Controller Documentation: AnimalController
@@ -87,34 +94,52 @@ This documentation provides an overview of the Docker Compose configuration used
 
 ## Services
 
-### MongoDB Service
+### MongoDB
 
-- **Image:** `mongo:latest`
-- **Container Name:** `my-mongodb`
-- **Exposed Ports:** `27017:27017`
-- **Volumes:** Map the local `./data` directory to `/data/db` in the container.
-- **Environment Variables:**
-  - `MONGO_INITDB_ROOT_USERNAME`: root
-  - `MONGO_INITDB_ROOT_PASSWORD`: example
+- **Image:** mongo:latest
+- **Container Name:** my-mongodb
+- **Ports:** Maps host port 27017 to container port 27017
+- **Volumes:** Maps a host directory `./data` to `/data/db` in the container
+- **Environment Variables:** Configures the MongoDB root username and password
+- **Network:** Attached to the `my-network` Docker network
 
-### Spring API Service
+### Spring API
 
-- **Build Context:** `./AnimalRegistry`
-- **Container Name:** `my-app`
-- **Exposed Ports:** `8081:8081`
-- **Depends On:** This service depends on the MongoDB service.
-- **Environment Variables:**
-  - `SPRING_DATA_MONGODB_URI`: mongodb://root:example@mongodb:27017
-  - `SPRING_DATA_MONGODB_DATABASE`: animaldb
+- **Build:** Builds the Spring API from the specified Dockerfile context
+- **Container Name:** my-app
+- **Ports:** Maps host port 8081 to container port 8081
+- **Depends On:** Requires MongoDB service to be running
+- **Environment Variables:** Configures MongoDB URI, database name, and OpenTelemetry parameters
+- **Network:** Attached to the `my-network` Docker network
 
-### React App Service
+### React App
 
-- **Build Context:** `./animalui`
-- **Container Name:** `react-app`
-- **Exposed Ports:** `3000:3000`
-- **Depends On:** This service depends on the Spring API service.
-- **Environment Variables:**
-  - `REACT_APP_API_URL`: http://spring-api:8081
+- **Build:** Builds the React app from the specified Dockerfile context
+- **Container Name:** react-app
+- **Ports:** Maps host port 3000 to container port 3000
+- **Depends On:** Requires Spring API service to be running
+- **Environment Variables:** Configures the API URL
+- **Network:** Attached to the `my-network` Docker network
+
+### OpenTelemetry Collector
+
+- **Image:** otel/opentelemetry-collector:latest
+- **Command:** Specifies the collector configuration file
+- **Volumes:** Mounts the collector configuration file from the host
+- **Ports:** Maps host port 4317 to container port 4317
+- **Depends On:** Requires the Jaeger service to be running
+- **Network:** Attached to the `my-network` Docker network
+
+### Jaeger Service
+
+- **Image:** jaegertracing/all-in-one:latest
+- **Ports:** Maps host ports 16686 and 14250 to container ports
+- **Network:** Attached to the `my-network` Docker network
+
+## Networks
+
+- **Network:** Defines a custom Docker network named `my-network` to connect the services and enable communication between them.
+
 
 ## Overview
 
@@ -161,46 +186,52 @@ This guide will walk you through the steps to start your project using Docker Co
    REACT_APP_API_URL=http://spring-api:8081
    ```
 
-## Starting the Project
+# Starting Your Project
 
-3. Open a terminal and navigate to the project directory.
+## Prerequisites
+- Make sure you have Docker installed on your system.
 
-4. Start the project by running the following command:
+## Steps
 
-   ```shell
-   docker-compose up -d
-   ```
+1. **Clone Your Project:**
+   - If you haven't already, clone your AnimalRegistry project to your local machine.
 
-   The `-d` flag runs the services in the background.
+2. **Navigate to the Project Directory:**
+   - Open a terminal or command prompt and navigate to your project's root directory.
 
-5. The services will start to build and run. You will see logs for each service as they initialize. Wait for the process to complete.
+3. **Update Your Docker Compose File:**
+   - Ensure that your `docker-compose.yml` file is properly configured according to the Docker Compose configuration you've shared.
 
-6. Once the services are up and running, you can access your application in a web browser:
+4. **Build and Run Your Docker Compose:**
+   - Run the following command to build and start your services:
+     ```bash
+     docker-compose up
+     ```
 
-   - Spring API: http://localhost:8081
-   - React App: http://localhost:3000
+   This command will start your MongoDB, Spring API, React app, OpenTelemetry collector, and Jaeger services.
 
-## Stopping the Project
+5. **Access Your Application:**
+   - After the services are up and running, you can access your application as follows:
+     - Your Spring API should be available at: [http://localhost:8081](http://localhost:8081)
+     - Your React app should be available at: [http://localhost:3000](http://localhost:3000)
+     - Jaeger UI for tracing can be accessed at: [http://localhost:16686](http://localhost:16686)
 
-7. To stop the project, open a terminal and navigate to the project directory.
+6. **Access Jaeger Traces:**
+   - To view traces in Jaeger, navigate to [http://localhost:16686](http://localhost:16686) in your web browser. You should be able to see traces as you use your application.
 
-8. Run the following command to stop and remove the containers:
+7. **Test Your Application:**
+   - Interact with your application (e.g., make HTTP requests, submit data, etc.) to generate traces.
 
-   ```shell
-   docker-compose down
-   ```
+8. **View Traces in Jaeger UI:**
+   - In Jaeger UI, you should see traces generated by your application. You can filter, search, and analyze the traces to monitor the behavior of your services.
 
-   This will gracefully shut down the services.
+9. **Stop Your Project:**
+   - When you're done, you can stop your project using the following command:
+     ```bash
+     docker-compose down
+     ```
 
-## Cleaning Up
+   This will stop and remove the containers, but it won't remove the data volume you've created for MongoDB. To remove that as well, you can use `docker-compose down -v`.
 
-9. If you want to remove all containers, networks, and volumes used by your project, run the following command:
-
-   ```shell
-   docker-compose down -v
-   ```
-
-   This is helpful when you want to start with a clean slate.
-
-Congratulations! Your project is up and running using Docker Compose. You can now develop and test your application in this environment.
+And that's it! You should now have your project up and running with OpenTelemetry and Jaeger for tracing. You can interact with your application and analyze traces using Jaeger UI.
 
