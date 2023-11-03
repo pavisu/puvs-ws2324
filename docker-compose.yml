@@ -44,17 +44,17 @@ services:
     networks:
       - my-network
 
-  collector:
-    image: otel/opentelemetry-collector:0.72.0
-    command: [ "--config=/etc/otel-collector-config.yml" ]
-    volumes:
-      - ./otel-config.yml:/etc/otel-collector-config.yml
-    ports:
-      - "4317:4317"
-    depends_on:
-      - jaeger-service
-    networks:
-      - my-network
+  #collector:
+   # image: otel/opentelemetry-collector:0.72.0
+    #command: [ "--config=/etc/otel-collector-config.yml" ]
+    #volumes:
+     # - ./otel-config.yml:/etc/otel-collector-config.yml
+    #ports:
+     # - "4317:4317"
+    #depends_on:
+     # - jaeger-service
+    #networks:
+     # - my-network
 
   jaeger-service:
     image: jaegertracing/all-in-one:latest

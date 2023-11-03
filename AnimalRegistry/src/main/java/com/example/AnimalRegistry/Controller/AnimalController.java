@@ -1,7 +1,7 @@
 package com.example.AnimalRegistry.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.cloud.sleuth.annotation.NewSpan;
+import org.springframework.cloud.sleuth.annotation.NewSpan;
 import org.springframework.web.bind.annotation.*;
 import com.example.AnimalRegistry.Entity.Animal;
 import com.example.AnimalRegistry.Service.AnimalServices;
@@ -47,7 +47,7 @@ public class AnimalController {
 
 
     // Define a POST endpoint for saving an animal
-    //@NewSpan
+    @NewSpan
     @PostMapping(value = "/save")
     private String saveAnimal(@RequestBody Animal animals) {
         logger.info("saveAnimal method called");
@@ -60,7 +60,7 @@ public class AnimalController {
     }
 
     // Define a GET endpoint for retrieving a list of all animals
-    //@NewSpan
+    @NewSpan
     @GetMapping(value = "/allanimals")
     // The method returns an Iterable collection of Animal objects, representing a
     // list of all animals in the registry.
@@ -72,7 +72,7 @@ public class AnimalController {
     }
 
     // Define a PUT endpoint for updating an existing animal by its ID
-   // @NewSpan
+    @NewSpan
     @PutMapping(value = "/edit/{id}")
     private Animal update(@RequestBody Animal animal, @PathVariable(name = "id") String animalid) {
         logger.info("update method called");
@@ -87,7 +87,7 @@ public class AnimalController {
     }
 
     // Define a DELETE endpoint for deleting an animal by its ID
-    //@NewSpan
+    @NewSpan
     @DeleteMapping("/delete/{id}")
     private void deleteAnimal(@PathVariable("id") String animalid) {
         logger.info("deleteAnimal method called");
@@ -96,7 +96,7 @@ public class AnimalController {
     }
 
     // Define a GET endpoint for retrieving an animal by its ID
-    //@NewSpan
+    @NewSpan
     @RequestMapping("/search/{id}")
     private Animal getAnimal(@PathVariable(name = "id") String animalid) {
         logger.info("getAnimal method called");
