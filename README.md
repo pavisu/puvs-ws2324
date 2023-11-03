@@ -121,15 +121,6 @@ This documentation provides an overview of the Docker Compose configuration used
 - **Environment Variables:** Configures the API URL
 - **Network:** Attached to the `my-network` Docker network
 
-### OpenTelemetry Collector
-
-- **Image:** otel/opentelemetry-collector:latest
-- **Command:** Specifies the collector configuration file
-- **Volumes:** Mounts the collector configuration file from the host
-- **Ports:** Maps host port 4317 to container port 4317
-- **Depends On:** Requires the Jaeger service to be running
-- **Network:** Attached to the `my-network` Docker network
-
 ### Jaeger Service
 
 - **Image:** jaegertracing/all-in-one:latest
