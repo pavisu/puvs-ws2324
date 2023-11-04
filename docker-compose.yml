@@ -10,7 +10,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
-
+    networks:
+      - my-network
+      
   spring-api:
     build:
       context: ./AnimalRegistry  # Specify the path to your Spring API Dockerfile
@@ -22,6 +24,12 @@ services:
     environment:
       SPRING_DATA_MONGODB_URI: mongodb://root:example@mongodb:27017
       SPRING_DATA_MONGODB_DATABASE: animaldb
+      OTEL_SERVICE_NAME: animalui-otel
+      OTEL_TRACES_EXPORTER: jaeger
+      OTEL_EXPORTER_JAEGER_ENDPOINT: http://jaeger-service:14250
+      #OTEL_RESOURCE_ATTRIBUTES: service.name=todobackend
+    networks:
+      - my-network
 
   react-app:
     build:
@@ -33,3 +41,28 @@ services:
       - spring-api
     environment:
       REACT_APP_API_URL: http://spring-api:8081
+    networks:
+      - my-network
+
+  #collector:
+   # image: otel/opentelemetry-collector:0.72.0
+    #command: [ "--config=/etc/otel-collector-config.yml" ]
+    #volumes:
+     # - ./otel-config.yml:/etc/otel-collector-config.yml
+    #ports:
+     # - "4317:4317"
+    #depends_on:
+     # - jaeger-service
+    #networks:
+     # - my-network
+
+  jaeger-service:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686"
+      - "14250"
+    networks:
+      - my-network
+
+networks:
+  my-network:

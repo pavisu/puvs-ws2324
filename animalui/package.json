@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@opentelemetry/api": "^1.6.0",
+    "@opentelemetry/core": "^1.17.1",
+    "@opentelemetry/instrumentation-xml-http-request": "^0.44.0",
+    "@opentelemetry/web": "^0.24.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
