@@ -92,10 +92,11 @@ public class AnimalController {
     // Define a DELETE endpoint for deleting an animal by its ID
     @NewSpan
     @DeleteMapping("/delete/{id}")
-    private void deleteAnimal(@PathVariable("id") String animalid) {
+    private ResponseEntity<Void> deleteAnimal(@PathVariable("id") String animalid) {
         logger.info("deleteAnimal method called");
         // Call the deleteAnimal method from AnimalServices to delete the animal
         animalServices.deleteAnimal((animalid));
+        return ResponseEntity.noContent().build();
     }
 
     // Define a GET endpoint for retrieving an animal by its ID
