@@ -2,6 +2,8 @@ package com.example.AnimalRegistry.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.sleuth.annotation.NewSpan;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.AnimalRegistry.Entity.Animal;
 import com.example.AnimalRegistry.Service.AnimalServices;
@@ -49,13 +51,13 @@ public class AnimalController {
     // Define a POST endpoint for saving an animal
     @NewSpan
     @PostMapping(value = "/save")
-    private String saveAnimal(@RequestBody Animal animals) {
+    private ResponseEntity<String> saveAnimal(@RequestBody Animal animals) {
         logger.info("saveAnimal method called");
             // Call the saveorUpdate method from AnimalServices to save or update the animal
             animalServices.saveorUpdate(animals);
 
             // Return the unique identifier (animalid) of the saved animal
-            return animals.getAnimalid();
+            return ResponseEntity.status(HttpStatus.CREATED).body(animals.getAnimalid());
        
     }
 
