@@ -3,7 +3,14 @@ import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Animal.css"; // Import custom styles
 // 1. import `ChakraProvider` component
-import { ChakraProvider } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  WrapItem,
+  Button,
+  Wrap,
+  Center,
+} from "@chakra-ui/react";
+import { AddIcon, DeleteIcon, EditIcon, RepeatIcon } from "@chakra-ui/icons";
 
 function Animal() {
   // The Logic of the User Interface
@@ -126,20 +133,28 @@ function Animal() {
                   }}
                 />
               </div>
-              <div className="text-center">
-                <button
-                  className="btn btn-primary mt-3 cute-button"
-                  onClick={save}
-                >
-                  Register
-                </button>
-                <button
-                  className="btn btn-secondary mt-3 ml-2 cute-button-update"
-                  onClick={update}
-                >
-                  Update
-                </button>
-              </div>
+              <Center>
+                <Wrap spacing={4}>
+                  <WrapItem>
+                    <Button
+                      rightIcon={<AddIcon />}
+                      colorScheme="pink"
+                      onClick={save}
+                    >
+                      Register
+                    </Button>
+                  </WrapItem>
+                  <WrapItem>
+                    <Button
+                      rightIcon={<RepeatIcon />}
+                      colorScheme="yellow"
+                      onClick={update}
+                    >
+                      Update
+                    </Button>
+                  </WrapItem>
+                </Wrap>
+              </Center>
             </form>
           </div>
           <div className="col-md-8">
@@ -162,21 +177,29 @@ function Animal() {
                       <td>{animal.animaladdress}</td>
                       <td>{animal.phonenumber}</td>
                       <td>
-                        {/* Buttons for editing and deleting animals */}
-                        <button
-                          type="button"
-                          className="btn btn-warning cute-button"
-                          onClick={() => editAnimal(animal)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-danger cute-button-two"
-                          onClick={() => DeleteAnimal(animal.animalid)}
-                        >
-                          Delete
-                        </button>
+                        <Center>
+                          {/* Buttons for editing and deleting animals */}
+                          <Wrap spacing={4}>
+                            <WrapItem>
+                              <Button
+                                rightIcon={<EditIcon />}
+                                colorScheme="purple"
+                                onClick={() => editAnimal(animal)}
+                              >
+                                Edit
+                              </Button>
+                            </WrapItem>
+                            <WrapItem>
+                              <Button
+                                rightIcon={<DeleteIcon />}
+                                colorScheme="red"
+                                onClick={() => DeleteAnimal(animal.animalid)}
+                              >
+                                Delete
+                              </Button>
+                            </WrapItem>
+                          </Wrap>
+                        </Center>
                       </td>
                     </tr>
                   );
