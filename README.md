@@ -27,6 +27,8 @@ Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 
 - Implemented OpenTelemetry and Jaeger for tracing
 
+- Implement Chakra UI for Frontend: https://chakra-ui.com/getting-started 
+
 
 # Spring Controller Documentation: AnimalController
 
