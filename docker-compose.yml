@@ -12,6 +12,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     networks:
       - my-network
+    labels:
+      - "com.example.tags=mongodb"
       
   spring-api:
     build:
@@ -30,6 +32,8 @@ services:
       #OTEL_RESOURCE_ATTRIBUTES: service.name=todobackend
     networks:
       - my-network
+    labels:
+      - "com.example.tags=spring-api"
 
   react-app:
     build:
@@ -43,6 +47,8 @@ services:
       REACT_APP_API_URL: http://spring-api:8081
     networks:
       - my-network
+    labels:
+      - "com.example.tags=react-app"
 
   #collector:
    # image: otel/opentelemetry-collector:0.72.0
@@ -58,11 +64,14 @@ services:
 
   jaeger-service:
     image: jaegertracing/all-in-one:latest
+    container_name: jaeger
     ports:
       - "16686:16686"
       - "14250"
     networks:
       - my-network
+    labels:
+      - "com.example.tags=jaeger"
 
 networks:
   my-network:
