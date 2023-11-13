@@ -77,7 +77,7 @@ public class AnimalController {
     // Define a PUT endpoint for updating an existing animal by its ID
     @NewSpan
     @PutMapping(value = "/edit/{id}")
-    private Animal update(@RequestBody Animal animal, @PathVariable(name = "id") String animalid) {
+    private ResponseEntity<Animal> update(@RequestBody Animal animal, @PathVariable(name = "id") String animalid) {
         logger.info("update method called");
         // Set the animal's ID based on the provided path variable
         animal.setAnimalid(animalid);
@@ -86,7 +86,7 @@ public class AnimalController {
         animalServices.saveorUpdate(animal);
 
         // Return the updated animal
-        return animal;
+        return ResponseEntity.ok(animal);
     }
 
     // Define a DELETE endpoint for deleting an animal by its ID
