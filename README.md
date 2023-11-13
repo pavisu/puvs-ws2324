@@ -5,7 +5,7 @@ Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 
 - Adding the Application logic (for demo purposes)
 
-- Add Controller, Entity, Repo and Service
+- Add Controller(with ResponseEntity), Entity, Repo and Service
 
 - Using MongoDB, MongoCompass and Postman
 
