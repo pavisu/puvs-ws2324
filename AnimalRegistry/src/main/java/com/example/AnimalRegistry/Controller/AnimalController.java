@@ -102,10 +102,11 @@ public class AnimalController {
     // Define a GET endpoint for retrieving an animal by its ID
     @NewSpan
     @RequestMapping("/search/{id}")
-    private Animal getAnimal(@PathVariable(name = "id") String animalid) {
+    private ResponseEntity<Animal> getAnimal(@PathVariable(name = "id") String animalid) {
         logger.info("getAnimal method called");
         // Call the getAnimalById method from AnimalServices to retrieve the animal
-        return animalServices.getAnimalById(animalid);
+        Animal animal = animalServices.getAnimalById(animalid);
+        return ResponseEntity.ok(animal);
     }
 
 }
