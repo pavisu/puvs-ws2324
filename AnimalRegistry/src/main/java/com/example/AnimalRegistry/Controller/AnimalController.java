@@ -66,11 +66,12 @@ public class AnimalController {
     @GetMapping(value = "/allanimals")
     // The method returns an Iterable collection of Animal objects, representing a
     // list of all animals in the registry.
-    public Iterable<Animal> getAnimals() {
+    public ResponseEntity<Iterable<Animal>> getAnimals() {
         logger.info("getAnimals method called");
         // Call the listAll method from AnimalServices to get all animals. This method
         // likely fetches and returns all animals from a data source (e.g., a database).
-        return animalServices.listAll();
+        Iterable<Animal> animals = animalServices.listAll();
+        return ResponseEntity.ok(animals);
     }
 
     // Define a PUT endpoint for updating an existing animal by its ID
