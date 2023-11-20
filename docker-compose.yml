@@ -18,6 +18,7 @@ services:
   spring-api:
     build:
       context: ./AnimalRegistry  # Specify the path to your Spring API Dockerfile
+    image: pavisu/puvs-ws2324:spring-api-latest
     container_name: my-app
     ports:
       - 8081:8081
@@ -38,6 +39,7 @@ services:
   react-app:
     build:
       context: ./animalui  # Specify the path to your React app Dockerfile
+    image: pavisu/puvs-ws2324:react-app-latest
     container_name: react-app
     ports:
       - 3000:3000
