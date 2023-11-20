@@ -5,7 +5,7 @@ Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 
 - Adding the Application logic (for demo purposes)
 
-- Add Controller, Entity, Repo and Service
+- Add Controller(with ResponseEntity), Entity, Repo and Service
 
 - Using MongoDB, MongoCompass and Postman
 
@@ -26,6 +26,8 @@ Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 - Using Java as implementation Language
 
 - Implemented OpenTelemetry and Jaeger for tracing
+
+- Implement Chakra UI for Frontend: https://chakra-ui.com/getting-started 
 
 
 # Spring Controller Documentation: AnimalController
