@@ -26,7 +26,7 @@ function Animal() {
 
   async function Load() {
     const result = await axios.get(
-      "http://localhost:8081/api/v1/animal/allanimals"
+      "http://localhost:8081/api/v1/animals/"
     );
     setAnimals(result.data);
     console.log(result.data);
@@ -35,7 +35,7 @@ function Animal() {
   async function save(event) {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:8081/api/v1/animal/save", {
+      await axios.post("http://localhost:8081/api/v1/animals/", {
         //animalid: animalid,
         animalname: animalname,
         animaladdress: animaladdress,
@@ -61,7 +61,7 @@ function Animal() {
 
   async function DeleteAnimal(animalid) {
     await axios.delete(
-      "http://localhost:8081/api/v1/animal/delete/" + animalid
+      "http://localhost:8081/api/v1/animals/" + animalid
     );
     alert("Animal deleted!");
     Load();
@@ -71,7 +71,7 @@ function Animal() {
     event.preventDefault();
 
     try {
-      await axios.put("http://localhost:8081/api/v1/animal/edit/" + animalid, {
+      await axios.put("http://localhost:8081/api/v1/animals/" + animalid, {
         //animalid: animalid,
         animalname: animalname,
         animaladdress: animaladdress,

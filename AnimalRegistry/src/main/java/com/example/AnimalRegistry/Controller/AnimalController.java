@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
 // The @RequestMapping annotation specifies the base URL path for this
 // controller, which is "/api/v1/animal".
 // All endpoints in this controller will be relative to this path.
-@RequestMapping("api/v1/animal")
+@RequestMapping("api/v1/animals")
 // The controller is responsible for handling various HTTP requests related to
 // animals in the API.
 public class AnimalController {
@@ -50,7 +50,7 @@ public class AnimalController {
 
     // Define a POST endpoint for saving an animal
     @NewSpan
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/")
     private ResponseEntity<String> saveAnimal(@RequestBody Animal animals) {
         logger.info("saveAnimal method called");
             // Call the saveorUpdate method from AnimalServices to save or update the animal
@@ -63,7 +63,7 @@ public class AnimalController {
 
     // Define a GET endpoint for retrieving a list of all animals
     @NewSpan
-    @GetMapping(value = "/allanimals")
+    @GetMapping(value = "/")
     // The method returns an Iterable collection of Animal objects, representing a
     // list of all animals in the registry.
     public ResponseEntity<Iterable<Animal>> getAnimals() {
@@ -76,7 +76,7 @@ public class AnimalController {
 
     // Define a PUT endpoint for updating an existing animal by its ID
     @NewSpan
-    @PutMapping(value = "/edit/{id}")
+    @PutMapping(value = "/{id}")
     private ResponseEntity<Animal> update(@RequestBody Animal animal, @PathVariable(name = "id") String animalid) {
         logger.info("update method called");
         // Set the animal's ID based on the provided path variable
@@ -91,7 +91,7 @@ public class AnimalController {
 
     // Define a DELETE endpoint for deleting an animal by its ID
     @NewSpan
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     private ResponseEntity<Void> deleteAnimal(@PathVariable("id") String animalid) {
         logger.info("deleteAnimal method called");
         // Call the deleteAnimal method from AnimalServices to delete the animal
