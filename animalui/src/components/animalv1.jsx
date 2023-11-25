@@ -20,22 +20,26 @@ function Animal() {
   const [phonenumber, setPhonenumber] = useState("");
   const [animals, setAnimals] = useState([]);
 
+  const baseUrl = "https://8081-pavisu-puvsws2324-vzjldk87m76.ws-eu106.gitpod.io/api/v1/animals/"
+
   useEffect(() => {
     (async () => await Load())();
   }, []);
 
   async function Load() {
-    const result = await axios.get(
-      "http://localhost:8081/api/v1/animals/"
-    );
-    setAnimals(result.data);
-    console.log(result.data);
+    try {
+      const result = await axios.get(baseUrl);
+      console.log(result.data); // Log the response data
+      setAnimals(result.data);
+    } catch (error) {
+      console.error("Error loading data:", error);
+    }
   }
 
   async function save(event) {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:8081/api/v1/animals/", {
+      await axios.post(baseUrl, {
         //animalid: animalid,
         animalname: animalname,
         animaladdress: animaladdress,
@@ -61,7 +65,7 @@ function Animal() {
 
   async function DeleteAnimal(animalid) {
     await axios.delete(
-      "http://localhost:8081/api/v1/animals/" + animalid
+      baseUrl + animalid
     );
     alert("Animal deleted!");
     Load();
@@ -71,7 +75,7 @@ function Animal() {
     event.preventDefault();
 
     try {
-      await axios.put("http://localhost:8081/api/v1/animals/" + animalid, {
+      await axios.put(baseUrl + animalid, {
         //animalid: animalid,
         animalname: animalname,
         animaladdress: animaladdress,
@@ -169,7 +173,7 @@ function Animal() {
                 </tr>
               </thead>
               <tbody>
-                {animals.map(function fn(animal) {
+                {animals.map((animal) =>{
                   return (
                     <tr key={animal.animalid}>
                       {/*<td>{animal.animalid}</td>*/}

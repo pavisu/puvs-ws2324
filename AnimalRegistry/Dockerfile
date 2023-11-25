@@ -3,6 +3,7 @@ FROM maven:3.8.3-openjdk-17-slim AS build
 WORKDIR /opt/AnimalRegistry
 COPY . .
 RUN mvn clean package
+RUN mvn package -DskipTests
 
 # Final Stage
 FROM eclipse-temurin:17-jdk-jammy

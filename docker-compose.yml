@@ -46,7 +46,7 @@ services:
     depends_on:
       - spring-api
     environment:
-      REACT_APP_API_URL: http://spring-api:8081
+      REACT_APP_API_URL: https://8081-pavisu-puvsws2324-vzjldk87m76.ws-eu106.gitpod.io
     networks:
       - my-network
     labels:

@@ -26,11 +26,11 @@ import org.slf4j.LoggerFactory;
 // ("*").
 // This is useful for enabling web clients from different domains to access this
 // API.
-@CrossOrigin(origins = "*")
+@CrossOrigin("https://3000-pavisu-puvsws2324-vzjldk87m76.ws-eu106.gitpod.io")
 // The @RequestMapping annotation specifies the base URL path for this
 // controller, which is "/api/v1/animal".
 // All endpoints in this controller will be relative to this path.
-@RequestMapping("api/v1/animals")
+@RequestMapping("/api/v1/animals")
 // The controller is responsible for handling various HTTP requests related to
 // animals in the API.
 public class AnimalController {
