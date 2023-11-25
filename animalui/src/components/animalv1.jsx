@@ -20,7 +20,7 @@ function Animal() {
   const [phonenumber, setPhonenumber] = useState("");
   const [animals, setAnimals] = useState([]);
 
-  const baseUrl = "https://8081-pavisu-puvsws2324-vzjldk87m76.ws-eu106.gitpod.io/api/v1/animals/" //here you have to change the URL of the springAPI
+  const baseUrl = "https://friendly-computing-machine-r4gq9r7rx6wxcw54r-8081.app.github.dev/api/v1/animals/" //here you have to change the URL of the springAPI
 
   useEffect(() => {
     (async () => await Load())();

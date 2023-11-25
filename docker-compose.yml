@@ -47,7 +47,7 @@ services:
       - spring-api
     environment:
       #change here the URL of the springAPI
-      REACT_APP_API_URL: https://8081-pavisu-puvsws2324-vzjldk87m76.ws-eu106.gitpod.io
+      REACT_APP_API_URL: https://friendly-computing-machine-r4gq9r7rx6wxcw54r-8081.app.github.dev
     networks:
       - my-network
     labels:

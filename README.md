@@ -29,6 +29,12 @@ Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 
 - Implement Chakra UI for Frontend: https://chakra-ui.com/getting-started 
 
+- If you want to make it work on Codespaces or gitpod: 
+   - you have to make the spring-api (backend) public
+   - you have to change the URLs in dockercompose: REACT_APP_API_URL: spring-api-url
+   - you have to change in animalui/src/components/animalv1.jsx the baseURL to the current spring-api-url
+   - you have to change in AnimalRegistry/src/main/java/com/example/AnimalRegistry/Controller/AnimalController.java the @CrossOrigin to the current react-app-url
+
 
 # Spring Controller Documentation: AnimalController
 
