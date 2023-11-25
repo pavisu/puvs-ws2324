@@ -46,6 +46,7 @@ services:
     depends_on:
       - spring-api
     environment:
+      #change here the URL of the springAPI
       REACT_APP_API_URL: https://8081-pavisu-puvsws2324-vzjldk87m76.ws-eu106.gitpod.io
     networks:
       - my-network

@@ -19,18 +19,20 @@ import org.slf4j.LoggerFactory;
 
 // This class is marked as a Spring RestController, indicating that it handles HTTP requests and serves as a part of the API.
 @RestController
+
 // The @Tag annotation is often used for API documentation, and it specifies the
 // name of the tag for this controller.
 @Tag(name = "Animal Registry API")
+
 // The @CrossOrigin annotation allows cross-origin requests from any origin
 // ("*").
-// This is useful for enabling web clients from different domains to access this
-// API.
-@CrossOrigin("https://3000-pavisu-puvsws2324-vzjldk87m76.ws-eu106.gitpod.io")
-// The @RequestMapping annotation specifies the base URL path for this
-// controller, which is "/api/v1/animal".
+// This is useful for enabling web clients from different domains to access this API.
+@CrossOrigin("https://3000-pavisu-puvsws2324-vzjldk87m76.ws-eu106.gitpod.io") // You can change here the URL of the frontend part
+
+// The @RequestMapping annotation specifies the base URL path for this controller, which is "/api/v1/animal".
 // All endpoints in this controller will be relative to this path.
 @RequestMapping("/api/v1/animals")
+
 // The controller is responsible for handling various HTTP requests related to
 // animals in the API.
 public class AnimalController {
