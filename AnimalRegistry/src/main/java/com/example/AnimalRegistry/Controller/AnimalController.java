@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 // The @CrossOrigin annotation allows cross-origin requests from any origin
 // ("*").
 // This is useful for enabling web clients from different domains to access this API.
-@CrossOrigin("https://friendly-computing-machine-r4gq9r7rx6wxcw54r-3000.app.github.dev") // You can change here the URL of the frontend part
+@CrossOrigin("https://3000-pavisu-puvsws2324-wxiku9m0c0t.ws-eu106.gitpod.io") // You can change here the URL of the frontend part
 
 // The @RequestMapping annotation specifies the base URL path for this controller, which is "/api/v1/animal".
 // All endpoints in this controller will be relative to this path.
