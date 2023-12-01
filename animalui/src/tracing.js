@@ -76,7 +76,7 @@ import { registerInstrumentations } from '@opentelemetry/instrumentation';
 const provider = new WebTracerProvider();
 const traceExporter = new OTLPTraceExporter({
     // optional - default url is http://localhost:4318/v1/traces
-    //url: 'http://jaeger-service:14250/v1/traces',
+    url: 'https://4318-pavisu-puvsws2324-wxiku9m0c0t.ws-eu106.gitpod.io/v1/traces',
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
 })

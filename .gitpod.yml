@@ -19,5 +19,10 @@ ports:
     port: 8081
     visibility: public
     onOpen: open-browser
+  - name: Jaeger
+    description: Port 4318 for the backend
+    port: 4318
+    visibility: public
+    onOpen: ignore
 
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
