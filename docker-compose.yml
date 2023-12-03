@@ -27,7 +27,7 @@ services:
     environment:
       SPRING_DATA_MONGODB_URI: mongodb://root:example@mongodb:27017
       SPRING_DATA_MONGODB_DATABASE: animaldb
-      OTEL_SERVICE_NAME: animalui-otel
+      OTEL_SERVICE_NAME: animal-backend-otel
       OTEL_TRACES_EXPORTER: jaeger
       OTEL_EXPORTER_JAEGER_ENDPOINT: http://jaeger-service:14250
       #OTEL_RESOURCE_ATTRIBUTES: service.name=todobackend
@@ -47,7 +47,8 @@ services:
       - spring-api
     environment:
       #change here the URL of the springAPI
-      REACT_APP_API_URL: https://8081-pavisu-puvsws2324-f4kdj1cmbe2.ws-eu106.gitpod.io
+      #REACT_APP_API_URL: https://8081-pavisu-puvsws2324-f4kdj1cmbe2.ws-eu106.gitpod.io
+      OTEL_SERVICE_NAME: animal-frontend-otel
     networks:
       - my-network
     labels:
