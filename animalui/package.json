@@ -2,7 +2,7 @@
   "name": "animalui",
   "version": "0.1.0",
   "private": true,
-  "proxy":"http://localhost:8081",
+  "proxy":"https://8081-pavisu-puvsws2324-ivi5aaywldz.ws-eu106.gitpod.io",
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
