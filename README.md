@@ -1,6 +1,8 @@
 # puvs-ws2324
 Kurs Parallele und Verteilte Systeme (Distributed Systems) WS23-24
 
+![Animal Registry UI](img/ARInterface.png "Animal Registry User-Interface")
+
 ## Step by step coding the lab project
 
 - Adding the Application logic (for demo purposes)
